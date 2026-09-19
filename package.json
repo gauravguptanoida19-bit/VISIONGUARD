@@ -1,0 +1,30 @@
+{
+  "name": "visionguard-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "VisionGuard: AI-Powered Real-Time Video Intelligence & Anomaly Detection Platform",
+  "scripts": {
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev": "concurrently -n \"BACKEND,FRONTEND\" -c \"cyan,magenta\" \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build": "npm --prefix shared run build && npm --prefix backend run build && npm --prefix frontend run build",
+    "seed": "npm --prefix backend run seed",
+    "test": "npm --prefix backend test"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "ai",
+    "video-intelligence",
+    "anomaly-detection",
+    "yolo",
+    "bytetrack",
+    "gemini",
+    "rag",
+    "surveillance",
+    "computer-vision"
+  ],
+  "author": "VisionGuard Team",
+  "license": "MIT"
+}

@@ -1,0 +1,11 @@
+fastapi>=0.110.0
+uvicorn>=0.29.0
+pydantic>=2.7.0
+numpy>=1.26.0
+python-multipart>=0.0.9
+requests>=2.31.0
+# Optional heavy ML packages (system runs gracefully in mock mode if not installed)
+# opencv-python>=4.9.0
+# ultralytics>=8.2.0
+# torch>=2.2.0
+# scikit-learn>=1.4.0
