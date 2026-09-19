@@ -39,7 +39,9 @@ jobs:
           npm --prefix frontend install
 
       - name: Build Frontend Application
-        run: npm --prefix frontend run build
+        run: |
+          npm --prefix frontend run build
+          cp frontend/dist/index.html frontend/dist/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

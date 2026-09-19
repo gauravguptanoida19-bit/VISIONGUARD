@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { SocketProvider } from './context/SocketContext';
 import { DemoProvider } from './context/DemoContext';
@@ -42,7 +42,7 @@ const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
 export const App: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AuthProvider>
         <SocketProvider>
           <DemoProvider>
@@ -80,6 +80,6 @@ export const App: React.FC = () => {
           </DemoProvider>
         </SocketProvider>
       </AuthProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
