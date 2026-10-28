@@ -6,11 +6,14 @@
 📂 **GitHub Repository**: [https://github.com/gauravguptanoida19-bit/VISIONGUARD](https://github.com/gauravguptanoida19-bit/VISIONGUARD)
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Online-emerald?logo=github)](https://gauravguptanoida19-bit.github.io/VISIONGUARD/)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://python.org/)
+[![Machine Learning](https://img.shields.io/badge/Machine%20Learning-Computer%20Vision-blueviolet)](https://github.com/gauravguptanoida19-bit/VISIONGUARD)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.2-EE4C2C?logo=pytorch&logoColor=white)](https://pytorch.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.9-5C3EE8?logo=opencv&logoColor=white)](https://opencv.org/)
+[![YOLOv8](https://img.shields.io/badge/YOLO-v8-00FFFF?logo=ultralytics&logoColor=black)](https://ultralytics.com/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110-teal?logo=fastapi)](https://fastapi.tiangolo.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue?logo=typescript)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3-cyan?logo=react)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-20+-green?logo=node.js)](https://nodejs.org/)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.110-teal?logo=fastapi)](https://fastapi.tiangolo.com/)
-[![Gemini 3.8](https://img.shields.io/badge/AI-Gemini%203.8%20Flash-orange?logo=google)](https://ai.google.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 ---

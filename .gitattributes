@@ -1,0 +1,15 @@
+# ============================================================
+# GitHub Linguist Configuration
+# Prioritize Python and Machine Learning codebase identification
+# ============================================================
+
+# Ensure Python ML Service is the primary detectable language
+*.py linguist-detectable=true
+ml-service/** linguist-detectable=true
+
+# Vendor supporting web clients and API proxies so Python is prominently recognized
+frontend/** linguist-vendored=true
+backend/** linguist-vendored=true
+shared/** linguist-vendored=true
+docker/** linguist-vendored=true
+scripts/** linguist-vendored=true
