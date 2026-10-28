@@ -6,6 +6,7 @@ import aiRoutes from './aiRoutes';
 import analyticsRoutes from './analyticsRoutes';
 import demoRoutes from './demoRoutes';
 import notificationRoutes from './notificationRoutes';
+import visionRoutes from './visionRoutes';
 import { StorageRepository } from '../repositories/storage';
 import { authenticateJWT } from '../middleware/auth';
 
@@ -44,5 +45,6 @@ router.use('/ai', aiRoutes);
 router.use('/analytics', analyticsRoutes);
 router.use('/demo', demoRoutes);
 router.use('/notifications', notificationRoutes);
+router.use('/vision', visionRoutes);
 
 export default router;

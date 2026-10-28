@@ -20,6 +20,7 @@ import { AnalyticsPage } from './pages/AnalyticsPage';
 import { ReportsPage } from './pages/ReportsPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { UsersPage } from './pages/UsersPage';
+import { VisionLabPage } from './pages/VisionLabPage';
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { user, isLoading } = useAuth();
@@ -66,6 +67,7 @@ export const App: React.FC = () => {
                 <Route path="/cameras/:id" element={<CameraDetailPage />} />
                 <Route path="/incidents" element={<IncidentsPage />} />
                 <Route path="/incidents/:id" element={<IncidentDetailPage />} />
+                <Route path="/vision-lab" element={<VisionLabPage />} />
                 <Route path="/ai-copilot" element={<AICopilotPage />} />
                 <Route path="/search" element={<SearchPage />} />
                 <Route path="/analytics" element={<AnalyticsPage />} />

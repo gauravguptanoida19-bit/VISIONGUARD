@@ -9,10 +9,12 @@ from app.schemas import (
 from app.detectors.yolo_detector import YOLOv8Detector
 from app.trackers.byte_track import ByteTracker
 from app.anomaly.engine import AnomalyEngine
+from app.classifiers.pytorch_cnn import pytorch_classifier
+from app.detectors.opencv_detector import opencv_detector
 
 app = FastAPI(
     title="VisionGuard ML Inference Service",
-    description="Real-time Computer Vision Detection, ByteTrack Tracking, and Anomaly Detection Engine",
+    description="Real-time Computer Vision Detection, PyTorch CNN Classification, OpenCV Spatial Tracking, and Anomaly Engine",
     version="1.0.0"
 )
 
@@ -109,6 +111,26 @@ def analyze_frame(req: FrameAnalysisRequest):
         "objects_count": len(tracked),
         "anomalies_count": len(anomalies)
     }
+
+@app.post("/classify")
+def classify_scene(payload: Dict[str, Any]):
+    """
+    Image classification with PyTorch Convolutional Neural Network (CNN).
+    Categorizes surveillance frame into physical security threat levels.
+    """
+    image_data = payload.get("image_data", "")
+    scenario_hint = payload.get("scenario_hint", "")
+    return pytorch_classifier.classify(image_data=image_data, scenario_hint=scenario_hint)
+
+@app.post("/detect-opencv")
+def detect_opencv(payload: Dict[str, Any]):
+    """
+    Object detection & spatial contour feature extraction using OpenCV.
+    Calculates bounding rects, aspect ratios, centroids, and zone violations.
+    """
+    image_data = payload.get("image_data", "")
+    scenario_hint = payload.get("scenario_hint", "")
+    return opencv_detector.detect(image_data=image_data, scenario_hint=scenario_hint)
 
 @app.post("/process-video")
 def process_video(camera_id: str, stream_url: str):

@@ -14,6 +14,7 @@ import {
   Activity,
   LogOut,
   Radio,
+  Cpu,
 } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
@@ -25,7 +26,8 @@ export const Sidebar: React.FC = () => {
     { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
     { to: '/cameras', label: 'Live Cameras', icon: Cctv },
     { to: '/incidents', label: 'Incidents', icon: AlertTriangle, badge: 'Active' },
-    { to: '/ai-copilot', label: 'AI Copilot', icon: Bot, isNew: true },
+    { to: '/vision-lab', label: 'Vision Lab (CV)', icon: Cpu, isNew: true },
+    { to: '/ai-copilot', label: 'AI Copilot', icon: Bot },
     { to: '/search', label: 'Smart Search', icon: Search },
     { to: '/analytics', label: 'Analytics', icon: BarChart3 },
     { to: '/reports', label: 'Reports', icon: FileText },

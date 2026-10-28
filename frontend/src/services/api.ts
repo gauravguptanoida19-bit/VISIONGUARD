@@ -173,4 +173,61 @@ export const api = {
     triggerIncident: () =>
       request<{ success: boolean; message: string; incident: Incident }>('/demo/trigger-incident', { method: 'POST' }),
   },
+
+  // VISION LAB (PyTorch CNN & OpenCV)
+  vision: {
+    classify: (data: { imageData?: string; scenarioHint?: string }) =>
+      request<{
+        success: boolean;
+        model: string;
+        framework: string;
+        topClass: string;
+        topLabel: string;
+        severity: string;
+        confidence: number;
+        inferenceTimeMs: number;
+        architecture: string;
+        predictions: Array<{
+          classId: string;
+          label: string;
+          severity: string;
+          description: string;
+          probability: number;
+          isTop: boolean;
+        }>;
+        featureActivations: Array<{
+          layer: string;
+          channels: number;
+          meanActivation: number;
+          sparsity: number;
+        }>;
+      }>('/vision/classify', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }),
+    detectOpenCV: (data: { imageData?: string; scenarioHint?: string }) =>
+      request<{
+        success: boolean;
+        engine: string;
+        openCvVersion: string;
+        pipeline: string[];
+        totalDetected: number;
+        inferenceTimeMs: number;
+        objects: Array<{
+          id: string;
+          label: string;
+          confidence: number;
+          bbox: [number, number, number, number];
+          centroid: [number, number];
+          areaPct: number;
+          aspectRatio: number;
+          contourPoints: number;
+          inRestrictedZone: boolean;
+          status: string;
+        }>;
+      }>('/vision/detect-opencv', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      }),
+  },
 };
