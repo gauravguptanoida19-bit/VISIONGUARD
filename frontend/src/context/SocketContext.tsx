@@ -90,11 +90,19 @@ export const SocketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       }));
     }
 
+    function onCustomAlert(e: Event) {
+      const customEvent = e as CustomEvent<Incident>;
+      if (customEvent.detail) {
+        onIncidentAlert(customEvent.detail);
+      }
+    }
+
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
     socket.on('incident:alert', onIncidentAlert);
     socket.on('notification:new', onNewNotification);
     socket.on('camera:telemetry', onTelemetry);
+    window.addEventListener('vg:incident:alert', onCustomAlert);
 
     return () => {
       socket.off('connect', onConnect);
@@ -102,6 +110,7 @@ export const SocketProvider: React.FC<{ children: ReactNode }> = ({ children }) 
       socket.off('incident:alert', onIncidentAlert);
       socket.off('notification:new', onNewNotification);
       socket.off('camera:telemetry', onTelemetry);
+      window.removeEventListener('vg:incident:alert', onCustomAlert);
     };
   }, [audioEnabled]);
 

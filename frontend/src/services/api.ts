@@ -8,6 +8,7 @@ import {
   CameraZone,
   AIAnalysisReport,
 } from '@visionguard/shared';
+import { mockDataService } from './mockDataService';
 
 const API_BASE = '/api';
 
@@ -23,19 +24,42 @@ function getHeaders(): HeadersInit {
 }
 
 async function request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-  const res = await fetch(`${API_BASE}${endpoint}`, {
-    ...options,
-    headers: {
-      ...getHeaders(),
-      ...options.headers,
-    },
-  });
+  try {
+    const res = await fetch(`${API_BASE}${endpoint}`, {
+      ...options,
+      headers: {
+        ...getHeaders(),
+        ...options.headers,
+      },
+    });
 
-  const data = await res.json();
-  if (!res.ok) {
-    throw new Error(data.message || `Request failed with status ${res.status}`);
+    const contentType = res.headers.get('content-type') || '';
+    if (contentType.includes('application/json')) {
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.message || `Request failed with status ${res.status}`);
+      }
+      return data;
+    }
+
+    // If the response is HTML (e.g., GitHub Pages 404) or non-JSON, delegate to client mock engine
+    return await mockDataService.handleRequest<T>(endpoint, options);
+  } catch (err: any) {
+    // If the error was a real backend rejection with specific business message, keep it
+    if (
+      err &&
+      err.message &&
+      !err.message.includes('fetch') &&
+      !err.message.includes('JSON') &&
+      !err.message.includes('status 404') &&
+      !err.message.includes('NetworkError')
+    ) {
+      throw err;
+    }
+
+    // Otherwise, seamlessly fulfill using client-side mock service
+    return await mockDataService.handleRequest<T>(endpoint, options);
   }
-  return data;
 }
 
 export const api = {
